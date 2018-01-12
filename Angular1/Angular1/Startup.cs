@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Angular1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Angular1
 {
@@ -23,6 +25,8 @@ namespace Angular1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<AngularCRUDTestContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AngularCRUDTestDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
